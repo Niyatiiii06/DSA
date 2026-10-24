@@ -35,13 +35,12 @@ left=0
 total=0
 for i in range(len(arr)):
     total+=arr[i]
-
-    if total==k:
-        max_len=max(max_len,i-left+1)
-
     while total>k:
         total-=arr[left]
         left+=1
+    if total==k:
+        max_len=max(max_len,i-left+1)
+
 print(max_len)
 
 #with sum<=k 
@@ -59,18 +58,20 @@ j=0
 max_len=0
 for i in range(n):
     sum+=arr[i]
-    if sum<=k:
-        max_len=max(max_len,i-j+1)
     while sum>k:
         sum-= arr[j]
         j+=1
+    if sum<=k:
+        max_len=max(max_len,i-j+1)
+
 
 j=0
 max_len=0
 for i in range(n):
     sum+=arr[i]
-    if sum<=k:
-        max_len=max(max_len,i-j+1)
     if sum>k:   #just decrease by 1 rather than until sum>=k it'll reduce tc
         sum-= arr[j]
         j+=1
+    if sum<=k:
+        max_len=max(max_len,i-j+1)
+
